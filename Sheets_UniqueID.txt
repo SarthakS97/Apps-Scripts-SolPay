@@ -1,0 +1,17 @@
+var ss1 = SpreadsheetApp.openById("1d5A3lu4bCIVBWqbXUwGJVqFuWLBFVhYeMcWk8W32LEU").getId();
+
+ScriptApp.newTrigger("myFunction")
+  .forSpreadsheet(ss1)
+  .onFormSubmit()
+  .create();
+
+const form  = FormApp.openById("1V6tSSWN8u6E_yr5P3vbsSn7LWlmz0kC28r3IJlCO_n8")
+const userID = Utilities.base64EncodeWebSafe(Utilities.getUuid())
+form.setConfirmationMessage(userID);
+
+function myFunction(e) {
+  var ss = SpreadsheetApp.openById("1d5A3lu4bCIVBWqbXUwGJVqFuWLBFVhYeMcWk8W32LEU");
+  var sheet = ss.getActiveSheet()
+  var cell = sheet.getRange(e.range["rowEnd"],e.range["columnEnd"]+1)
+  cell.setValue(userID)
+ }
