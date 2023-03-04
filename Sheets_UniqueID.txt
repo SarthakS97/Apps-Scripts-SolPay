@@ -1,11 +1,11 @@
-var ss1 = SpreadsheetApp.openById("1d5A3lu4bCIVBWqbXUwGJVqFuWLBFVhYeMcWk8W32LEU").getId();
+var ss1 = SpreadsheetApp.openById("ID of the Sheet connected to form").getId();
 
 ScriptApp.newTrigger("myFunction")
   .forSpreadsheet(ss1)
   .onFormSubmit()
   .create();
 
-const form  = FormApp.openById("1V6tSSWN8u6E_yr5P3vbsSn7LWlmz0kC28r3IJlCO_n8")
+const form  = FormApp.openById("Form ID")
 const userID = Utilities.base64EncodeWebSafe(Utilities.getUuid())
 form.setConfirmationMessage(userID);
 
